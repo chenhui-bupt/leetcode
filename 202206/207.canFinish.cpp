@@ -27,8 +27,8 @@ public:
         queue<int> q;
         int courses = 0;
         for (auto iter = inDegree.begin(); iter != inDegree.end(); ++iter) {
-            if (*iter->second == 0) {
-                q.push(*iter->first);
+            if (iter->second == 0) {
+                q.push(iter->first);
             }
         }
         while (!q.empty()) {
@@ -72,6 +72,7 @@ public:
     }
 
     void dfs(vector<vector<int>>& edges, vector<int>& visited, int i) {
+        // 0表示未处理，1表示有环（任务结束），2表示任务处理完成
         visited[i] = 1;
         for (int j : edges[i]) {
             if (visited[j] == 0) {

@@ -29,6 +29,8 @@ public:
         for (int i = 0; i <= n; ++i) {
             res[i] = count(i);
         }
+        
+        return res;
     }
 
     int count(n) {

@@ -17,6 +17,18 @@
 */
 class Solution {
 public:
+    // 方法一：递归
+    void dfs(TreeNode* root, vector<int>& res) {
+        if (!root) {
+            return;
+        }
+
+        dfs(root->left, res);
+        res.push_back(root->val);
+        dfs(root->right, res);
+    }
+
+    // 方法二：递归调用栈
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> res;
         stack<TreeNode*> st;
@@ -28,6 +40,7 @@ public:
             }
 
             root = st.top();
+            st.pop();
             res.push_back(root->val);
             root = root->right;
         }

@@ -3,6 +3,7 @@
 dp[0][j] = 1;
 dp[i][0] = 1;
 dp[i][j] = dp[i-1][j] + dp[i][j-1];
+本质上是从 m+n-2步中，选出m-1步向下走，即组合C_m+n-2_m-1
 */
 class Solution {
 public:

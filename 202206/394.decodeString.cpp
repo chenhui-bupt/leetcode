@@ -50,7 +50,7 @@ public:
         return dfs(s, index);
     }
 
-    string dfs(string s, int index) {
+    string dfs(string s, int& index) {
         if (index == s.size() || s[index] == ']') {
             return "";
         }

@@ -9,23 +9,20 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-// 层序遍历，宽度优先搜索，队列
 class Solution {
 public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> res;
-        if (!root) {
-            return res;
-        }
+    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
         queue<TreeNode*> q;
         q.push(root);
+        vector<vector<int>> res;
+        int l = 1;
         while (!q.empty()) {
             int size = q.size();
-            vector<int> t_res;
+            vector<int> level;
             for (int i = 0; i < size; ++i) {
-                TreeNode* node = q.front();
+                TreeNode* node = q.front()
                 q.pop();
-                t_res.push_back(node->val);
+                level.push_back(node->val);
                 if (node->left) {
                     q.push(node->left);
                 }
@@ -33,7 +30,11 @@ public:
                     q.push(node->right);
                 }
             }
-            res.push_back(t_res);
+            if (l % 2 == 0) {
+                reverse(level.begin(), level.end());
+            }
+            res.push_back(level);
+            l++;
         }
         return res;
     }

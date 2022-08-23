@@ -18,6 +18,11 @@ https://leetcode-cn.com/problems/longest-palindromic-substring/
 （1）遍历字符串，分别以（i，i)和（i，i+1）为中心扩展回文子串
 （2）比较，记录最长回文子串
 
+8.字符串转数字，myAtoi
+数据结构：字符串 + 哈希表
+算法：有限状态机
+思路：字符有四种状态”空格、符号、数字、其他“，构建状态转移表，表示各种状态之间的转移关系，相当于写了很多if else语句。当遇到新的字符时，根据上一个状态计算其转移状态，不同状态对应不同的动作，比如数字加和，符号识别，或者结束。
+
 10.正则表达式匹配
 https://leetcode-cn.com/problems/regular-expression-matching/
 字符串s匹配包含'.', '*'的pattern
@@ -32,7 +37,7 @@ if p[index2 + 1] == '*' {
 	}
 }
 （3）'.'匹配任意字符
-if (s[index1] == p[index2] || p[index2] == '*') {
+if (s[index1] == p[index2] || p[index2] == '.') {
 	return dfs(s, index1 + 1, p, index2 + 1);
 }
 最好string转成char*，可直接利用指针移位！！！
@@ -203,7 +208,7 @@ https://leetcode-cn.com/problems/rotate-image/
 （0）顺时针旋转，matrix[i][j] -> matrix[n-1-j][i]
 （1）先水平上下翻转, swap(matrix[i][j], matrix[n-1-i][j]);
 （2）再主对角线沿着x+y=n翻转， swap(matrix[i][j], matrix[j][i])，正好达到顺时针旋转的目的
-
+两步不就行了？
 
 49.字母异位词分组
 https://leetcode-cn.com/problems/group-anagrams/
@@ -460,7 +465,7 @@ https://leetcode-cn.com/problems/single-number/
 https://leetcode-cn.com/problems/word-break/
 思路：
 （1）动态规划 + 哈希
-（2）初始化：vector<boo> dp(size+1); dp[0] = true;
+（2）初始化：vector<bool> dp(size+1); dp[0] = true;
 （3）转移方程：
 if (dp[j] && wordDict.find(s.substr(j, i-j)) != wordDict.end()) {
 	dp[i] = true;
@@ -531,6 +536,7 @@ https://leetcode-cn.com/problems/majority-element/
 （4）采用抵消法，最终剩下的一定是超过n/2个数的元素
 
 超过n/3个数的元素呢？？？
+用两个变量计数器，每次消除三个不同的数字（不会影响问题的结果）
 
 
 198.打家劫舍
