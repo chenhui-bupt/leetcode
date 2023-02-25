@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // 算法一：左右括号计数器
     int longestValidParentheses(string s) {
     	int res = 0;
         int left = 0;
@@ -35,7 +36,7 @@ public:
         return res;
     }
 
-    // 动态规划
+    // 算法二：动态规划
     // 只有当s[i] == ')'，才是一个配对结束的地方，然后便可看他递推关系，看他前面有多少组成的pair
     int longestValidParentheses(string s) {
         int res = 0;
@@ -50,7 +51,7 @@ public:
         return res;
     }
 
-    // 栈，通过栈来维护左边界
+    // 算法三：栈，通过栈来维护左边界
     int longestValidParentheses(string s) {
         int res = 0;
         stack<int> st;

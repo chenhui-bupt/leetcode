@@ -6,6 +6,7 @@
  */
 class Solution {
 public:
+    // 错误算法
     bool increasingTriplet(vector<int>& nums) {
         int left = 0;
         int right = nums.size() - 1;
@@ -30,6 +31,7 @@ public:
         return cnt < nums.size() - 2;
     }
 
+    // 算法一：哨兵算法
     bool increasingTriplet(vector<int>& nums) {
         int n = nums.size();
         vector<int> left(n, INT_MAX);
@@ -49,6 +51,7 @@ public:
         return false;
     }
 
+    // 算法二：贪心算法
     bool increasingTriplet(vector<int>& nums) {
         int first = nums[0];
         int second = INT_MAX;

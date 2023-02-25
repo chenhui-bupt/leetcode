@@ -10,18 +10,17 @@
  * };
  */
 
-/*
-算法1：中序遍历，输出第k个元素
-算法2：通过记录以每个节点为根节点的搜索树左右子树节点的个数，这样可以二分查找第k小的数（类似快排查找第k小的数）
-
-*/
+/**
+ * 算法一：中序遍历，输出第k个元素
+ * 算法二：通过记录以每个节点为根节点的搜索树左右子树节点的个数，这样可以二分查找第k小的数（类似快排查找第k小的数）
+ */
 
 class Solution {
 public:
     unordered_map<TreeNode*, int> node_num;
 
 public:
-    // 算法1：中序遍历
+    // 算法一：中序遍历
     int kthSmallest(TreeNode* root, int k) {
         stack<TreeNode*> st;
         while (root || !st.empty()) {
@@ -44,7 +43,7 @@ public:
         return root->val;
     }
 
-    // 算法2：二叉树各节点的节点数，快排查找思路
+    // 算法二：二叉树各节点的节点数，快排查找思路
     int kthSmallest(TreeNode* root, int k) {
         // 1.预处理，记录节点数
         dfs(root);

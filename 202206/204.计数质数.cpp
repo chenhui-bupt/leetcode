@@ -32,7 +32,7 @@ public:
             if (isPrime[i]) {
                 res++;
                 if ((long long) i * i < n) {
-                    for (int j = i * i; j < n; j+=i) {
+                    for (int j = i * i; j < n; j += i) {
                         isPrime[j] = 0;
                     }
                 }

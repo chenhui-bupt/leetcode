@@ -22,8 +22,8 @@ public:
         ListNode* odd = new ListNode(0);
         ListNode* even = new ListNode(0);
         ListNode* p_odd = odd;
-        ListNode* p_even = eve;
-        int num = 1;
+        ListNode* p_even = even;
+        int n = 1;
         ListNode* p = head;
         while (p) {
             if (n % 2 == 1) {

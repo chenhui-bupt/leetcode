@@ -13,7 +13,7 @@ public:
         return (res + 1) * (res + 1) <= x ? res + 1 : res;
     }
 
-    // 算法2：二分迭代
+    // 算法2：二分查找
     int mySqrt(int x) {
         int left = 0;
         int right = x;

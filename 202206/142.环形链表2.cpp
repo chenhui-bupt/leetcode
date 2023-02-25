@@ -8,7 +8,7 @@
  */
 class Solution {
 public:
-    ListNode *detectCycle(ListNode *head) {
+    ListNode* detectCycle(ListNode* head) {
         if (!head) {
             return nullptr;
         }

@@ -1,7 +1,10 @@
 /**
- * 算法2、归并排序，O(nlogn)
- * 我们可以利用归并排序逆序对的方法，统计右边小于该数的个数
+ * 数据结构一：数组
+ * 算法一：归并排序，O(nlogn)
+ * 思路一：
+ * 第一步：我们可以利用归并排序逆序对的方法，统计右边小于该数的个数
  * 所以需要从小到大归并，这样才能找到有多少是逆序的，可以仔细想想。
+ * 第二步：归并完成后将排序结果更新到原数组中，同时更新下标索引（便于下次计算逆序数）
  */
 class Solution {
 public:
@@ -40,11 +43,10 @@ public:
             if (nums[i] <= nums[j]) {
                 tmp_nums[p] = nums[i];
                 tmp_idx[p] = idx[i];
-                res[idx[i]] += j - (mid + 1);
-
+                res[idx[i]] += j - (mid + 1); // 累加计算逆序数
                 ++i;
                 ++p;
-            } else {
+            } else { // nums[i] > nums[j]仍处于逆序中，暂时无法计算逆序数
                 tmp_nums[p] = nums[j];
                 tmp_idx[p] = idx[j];
                 ++j;
@@ -54,7 +56,7 @@ public:
         while (i <= mid) {
             tmp_nums[p] = nums[i];
             tmp_idx[p] = idx[i];
-            res[idx[i]] += j - (mid + 1);
+            res[idx[i]] += j - (mid + 1); // 累加计算逆序数
             ++i;
             ++p;
         }
@@ -65,15 +67,17 @@ public:
             ++p;
         }
         for (int i = left; i <= right; ++i) {
-            nums[i] = tmp_nums[i];
-            idx[i] = tmp_idx[i];
+            nums[i] = tmp_nums[i]; // 归并排序好的子结果更新到原数组中
+            idx[i] = tmp_idx[i]; // 同时更新下标索引
         }
     }
 };
 
 
 /**
- * 算法2：单调栈，O(n^2)
+ * 数据结构二：栈
+ * 算法二：单调栈，O(n^2)
+ * 思路二：利用单调递增栈，当栈元素弹出时，即可统计逆序数
 */
 class Solution {
 public:

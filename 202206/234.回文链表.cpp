@@ -11,7 +11,7 @@
 class Solution {
 public:
     bool isPalindrome(ListNode* head) {
-        // 将链表二分，翻转链表，再比较
+        // 第一步：将链表二分，翻转链表，再比较
         ListNode* p1 = head;
         ListNode* p2 = head;
         while (p1) {
@@ -22,6 +22,7 @@ public:
             }
         }
 
+        // 第二步：翻转链表
         ListNode* pre = nullptr;
         while (p2) {
             ListNode* next = p2->next;
@@ -29,6 +30,8 @@ public:
             pre = p2;
             p2 = next;
         }
+
+        // 第三步：比较是否相等
         p1 = head;
         p2 = pre;
         while (p2) {

@@ -11,18 +11,18 @@ public:
         int cnt2 = 0;
         for (int num : nums) {
             if (cnt1 > 0 && a == num) {
-                cnt1++;
+                cnt1++; // 计数
             } else if (cnt2 > 0 && b == num) {
-                cnt2++;
+                cnt2++; // 计数
             } else if (cnt1 == 0) {
-                a = num;
+                a = num; // 重新赋值
                 cnt1 = 1;
             } else if (cnt2 == 0) {
-                b = num;
+                b = num; // 重新赋值
                 cnt2 = 1;
             } else {
-                cnt1--;
-                cnt2--;
+                cnt1--; // 剔除
+                cnt2--; // 剔除
             }
         }
 

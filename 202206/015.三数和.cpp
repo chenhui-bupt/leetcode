@@ -1,3 +1,7 @@
+/**
+ * 预排序降低计算时间复杂度，重点在于怎么剔除重复的问题！！！
+ * 
+ */
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
@@ -31,4 +35,3 @@ public:
     }
 };
 
-重点在于怎么剔除重复的问题！！！

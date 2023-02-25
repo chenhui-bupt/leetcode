@@ -1,3 +1,6 @@
+/**
+ * 记住这个结论：分数的结果是有理数
+ */
 class Solution {
 public:
     string fractionToDecimal(int numerator, int denominator) {
@@ -24,7 +27,7 @@ public:
         // 小数部分
         string fraction = "";
         long remainder = num % denom;
-        unordered_map<long, int> mp;
+        unordered_map<long, int> mp; // 哈希表记录循环数字
         int index = 0;
         while (remainder != 0 && mp.count(remainder) == 0) {
             mp[remainder] = index++;
