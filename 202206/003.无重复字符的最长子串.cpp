@@ -7,7 +7,7 @@ public:
     	unordered_map<char, int> mp;
     	for (int i = 0; i < s.size(); ++i) {
     		char c = s[i];
-    		// 遇到重复字符，调整左边界
+    		// 遇到重复字符，且超过左边界，则调整左边界
     		if (mp.find(c) != mp.end() && mp[c] >= left) {
     			left = mp[c] + 1;
     		}

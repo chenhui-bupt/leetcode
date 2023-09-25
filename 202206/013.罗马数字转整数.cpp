@@ -14,13 +14,13 @@ public:
 
         int res = 0;
         for (int i = 0; i < s.size(); ++i) {
-            if (s[i] == 'I' && i < s.size() && (s[i+1] == 'V' || s[i+1] == 'X')) {
+            if (s[i] == 'I' && i < s.size() - 1 && (s[i+1] == 'V' || s[i+1] == 'X')) {
                 res += (table[s[i+1]] - table[s[i]]);
                 i++;
-            } else if (s[i] == 'X' && i < s.size() && (s[i+1] == 'L' || s[i+1] == 'C')) {
+            } else if (s[i] == 'X' && i < s.size() - 1 && (s[i+1] == 'L' || s[i+1] == 'C')) {
                 res += (table[s[i+1]] - table[s[i]]);
                 i++;
-            } else if (s[i] == 'C' && i < s.size() && (s[i+1] == 'D' || s[i+1] == 'M')) {
+            } else if (s[i] == 'C' && i < s.size() - 1 && (s[i+1] == 'D' || s[i+1] == 'M')) {
                 res += (table[s[i+1]] - table[s[i]]);
                 i++;
             } else {

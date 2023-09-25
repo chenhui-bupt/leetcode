@@ -37,24 +37,26 @@ public:
 // 参考题解，找到总剩余油量最小的点（波谷）从该处出发如果能走完一圈，即是求解，不能则无解
 /**
  * 能走完一圈必须满足条件：
- * （1）总剩余油量大于0；
- * （2）每时每刻的剩余油量大于0。
+ * （1）总剩余油量大于0； -> space > 0
+ * （2）每时每刻的剩余油量大于0。 -> minIdx
  * 所以，从总剩余油量最小的点出发能走完一圈，则满足上诉两个条件。
  */ 
-public int canCompleteCircuit(int[] gas, int[] cost) {
-    int len = gas.length;
-    int spare = 0;
-    int minSpare = Integer.MAX_VALUE;
-    int minIndex = 0;
-
-    for (int i = 0; i < len; i++) {
-        spare += gas[i] - cost[i];
-        if (spare < minSpare) {
-            minSpare = spare;
-            minIndex = i;
+class Solution {
+public:
+    int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+        int minSpace = INT_MAX;
+        int minIdx = -1;
+        int space = 0;
+        for (int i = 0; i < gas.size(); ++i) {
+            space += (gas[i] - cost[i]);
+            //cout << space << endl;
+            if (space < minSpace) {
+                minSpace = space;
+                minIdx = i;
+            }
         }
+        // spare >= 0保证总剩余油量大于0（可以走完一圈）
+        // minIndex表示从最低点minIndex出发，才能保证每时每刻油量大于等于0
+        return space >= 0 ? (minIdx + 1) % gas.size() : -1;
     }
-
-    return spare < 0 ? -1 : (minIndex + 1) % len;
-}
-
+};

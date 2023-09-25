@@ -55,7 +55,7 @@ public:
             int leftNum = left ? node_num[left] : 0;
             if (leftNum < k - 1) { // 需要右子树
                 node = node->right;
-                k -= (left + 1);
+                k -= (leftNum + 1);
             } else if (leftNum == k - 1) { // 恰好找到
                 break;
             } else { // 需要查找左子树

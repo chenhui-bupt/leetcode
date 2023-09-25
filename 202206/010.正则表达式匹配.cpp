@@ -15,7 +15,7 @@ public:
     		return regex(s, i, p, j + 2) || (i < s.size() && (s[i] == p[j] || p[j] == '.') && regex(s, i + 1, p, j));
     	}
 
-    	if ((i < s.size() && s[i] == p[j]) || p[j] == '.') {
+    	if (i < s.size() && (s[i] == p[j] || p[j] == '.')) {
     		return regex(s, i + 1, p, j + 1);
     	} else {
     		return false;

@@ -46,6 +46,7 @@ public:
         }
     }
 
+    // 方法三：迭代-下一个节点
     vector<int> inorderTraversal(TreeNode* root) {
         /*
         类比二叉树的下一个节点问题，从根节点出发，依次构建左子树的最右节点的下一个节点（这是中序遍历的顺序）

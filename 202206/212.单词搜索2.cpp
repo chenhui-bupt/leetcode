@@ -96,9 +96,7 @@ public:
                 }
             }
             board[x][y] = c;
-        }
-
-        if (child->children.empty()) {
+        } else {
             root->children.erase(c); // 回退删除
         }
         

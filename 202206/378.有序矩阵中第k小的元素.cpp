@@ -32,7 +32,7 @@ public:
             int mid = left + (right - left) / 2;
             int flag = check(matrix, mid, k);
             if (flag >= 0) {
-                right = mid; // 为什么没有用mid - 1，避免mid刚好是答案，而错过（且mid严格小于right）
+                right = mid; // 为什么没有用mid - 1，避免mid刚好是答案，而错过（且left < right所以mid严格小于right，不会死循环）
             } else {
                 left = mid + 1; // 为设么不把上述条件放在left这里，避免死循环
             }

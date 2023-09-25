@@ -14,7 +14,7 @@
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
-    	// 算法1：类哈希表
+    	// 算法1：类哈希表（自身标记法）
     	int  n = nums.size();
     	for (int i = 0; i < n; ++i) {
     		if (nums[i] <= 0) {

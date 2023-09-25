@@ -7,16 +7,16 @@ public:
         return res;
     }
 
-    void dfs(string& s, int index, vector<string>& path, vector<vector<string>>& res) {
-        if (index == s.size()) {
+    void dfs(string& s, int i, vector<string>& path, vector<vector<string>>& res) {
+        if (i == s.size()) {
             res.push_back(path);
             return;
         }
 
-        for (int i = index; i < s.size(); ++i) {
-            if (isPalindrome(s.substr(index, i - index + 1))) {
-                path.push_back(s.substr(index, i - index + 1));
-                dfs(s, i + 1, path, res);
+        for (int j = i; j < s.size(); ++j) {
+            if (isPalindrome(s.substr(i, j - i + 1))) {
+                path.push_back(s.substr(i, j - i + 1));
+                dfs(s, j + 1, path, res);
                 path.pop_back();
             }
         }

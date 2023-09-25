@@ -41,6 +41,7 @@ public:
             vec[s[i] - 'a']++;
         }
 
+        // 找到不符合的字符串，然后分割，因为最长重复子串必定在某个子数组中！
         int split = -1;
         for (int i = 0; i < 26; ++i) {
             if (vec[i] > 0 && vec[i] < k) {

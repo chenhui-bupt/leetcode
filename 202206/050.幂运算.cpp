@@ -5,6 +5,7 @@
 */
 class Solution {
 public:
+    // 算法一：递归
     double myPow(double x, int n) {
         long long N = n;
         if (N >= 0) {
@@ -27,6 +28,7 @@ public:
         }
     }
 
+    // 算法二：迭代
     double myPow(double x, int n) {
         long long N = n;
         bool sign = false;
@@ -38,7 +40,7 @@ public:
         double res = 1;
         double p = x;
         while (N) {
-            if (N & 1) {
+            if (N & 1) { // N的二进制表示位为1，需要将贡献x^(2^k)记录答案；不为1时p只是中间结果
                 res *= p;
             }
             N = N >> 1;

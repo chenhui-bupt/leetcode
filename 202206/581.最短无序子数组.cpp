@@ -52,7 +52,7 @@ public:
             if (maxn <= nums[i]) {
                 maxn = nums[i];
             } else {
-                right = i;
+                right = i; // 出现波峰，更新右边界
             }
 
             // 第二步：从右往左找出左边界
@@ -60,7 +60,7 @@ public:
             if (minn >= nums[j]) {
                 minn = nums[j];
             } else {
-                left = j;
+                left = j; // 出现波谷，更新左边界
             }
         }
         // 第三步：计算无序子数组长度

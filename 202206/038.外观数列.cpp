@@ -13,7 +13,7 @@ public:
             while (j < s.size() && s[j] == s[i]) {
                 j++;
             }
-            res += to_string(j - i) + s[i];
+            res += to_string(j - i) + s[i]; // 生成描述：几个几，如"222" -> "32"表示三个2
             i = j;
         }
         return res;

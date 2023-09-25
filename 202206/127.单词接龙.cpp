@@ -64,6 +64,7 @@ public:
     vector<vector<int>> edges;
 
 public:
+    // 添加新节点
     void addNode(string& word) {
         if (node_id.find(word) == node_id.end()) {
             node_id[word] = node_num++;
@@ -71,13 +72,14 @@ public:
         }
     }
 
+    // 把单词连边到词根上，从而构建出图
     void addEdge(string& word) {
         addNode(word);
         int id1 = node_id[word];
         for (char& c : word) {
             char tmp = c;
             c = '*';
-            addNode(word);
+            addNode(word); // 通过中间节点连接
             int id2 = node_id[word];
             edges[id1].push_back(id2);
             edges[id2].push_back(id1);
@@ -86,6 +88,7 @@ public:
     }
 
     int ladderLength(string& beginWord, string endWord, vector<string> wordList) {
+        // 第一步：建图
         for (string word : wordList) {
             addEdge(word);
         }
@@ -95,10 +98,11 @@ public:
             return 0;
         }
 
+        // 第二步：宽度优先搜索
         int begin = node_id[beginWord];
         int end = node_id[endWord];
-        vector<int> dis(node_num, INT_MAX);
-        dis[begin] = 0;
+        vector<int> weights(node_num, INT_MAX);
+        weights[begin] = 0;
         queue<int> q;
         q.push(begin);
         
@@ -106,12 +110,12 @@ public:
             int u = q.front();
             q.pop();
             if (u == end) {
-                return dis[end] / 2 + 1; // 找到即结束
+                return weights[end] / 2 + 1; // 找到即结束
             }
             for (int v : edges[u]) {
-                if (dis[v] == INT_MAX) { // 确保不是环
+                if (weights[v] == INT_MAX) { // 确保不是环
                     q.push(v);
-                    dis[v] = dis[u] + 1;
+                    weights[v] = weights[u] + 1;
                 }
             }
         }

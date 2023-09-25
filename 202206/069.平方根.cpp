@@ -20,8 +20,8 @@ public:
         int res = -1;
         while (left <= right) {
             int mid = left + (right - left) >> 1;
-            if (mid * mid <= x) {
-                res = mid;
+            if ((long long)mid * mid <= x) {
+                res = mid; // 类似于查找元素的最后一个位置
                 left = mid + 1;
             } else {
                 right = mid - 1;

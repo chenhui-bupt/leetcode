@@ -1,4 +1,4 @@
-/*
+/* 交易多次
 动态规划：dp[i][j]表示第i天持有或卖出股票
 */
 class Solution {
@@ -20,7 +20,7 @@ public:
         int n = prices.size();
         for (int i = 1; i < n; ++i) {
             if (prices[i] > prices[i-1]) {
-                res += prices[i] - prices[i-1];
+                res += prices[i] - prices[i-1]; // 获得的是累计收益
             }
         }
         return res;

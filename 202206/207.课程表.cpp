@@ -63,8 +63,8 @@ public:
             edges[prerequisite[1]].push_back(prerequisite[0]);
         }
 
-        for (int i = 0; i < numCourses; ++i) {
-            if (visited[i] == 0 && valid) {
+        for (int i = 0; i < numCourses && valid; ++i) {
+            if (visited[i] == 0) {
                 dfs(edges, visited, i);
             }
         }

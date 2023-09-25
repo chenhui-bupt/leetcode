@@ -14,8 +14,7 @@ public:
                     j++;
                 }
                 if (j < nums.size()) {
-                    nums[i+1] = nums[j];
-                    i++;
+                    nums[i++] = nums[j];
                 }
             } else {
                 i++;
@@ -23,5 +22,17 @@ public:
             }
         }
         return i + 1;
+    }
+
+    int removeDuplicates(vector<int>& nums) {
+        int slow = 1;
+        int fast = 1;
+        while (fast < nums.size()) {
+            if (nums[slow - 1] != nums[fast]) { // 随着程序的迭代，slow和fast之间夹着的都是重复过的，不用关注
+                nums[slow++] = nums[fast];
+            }
+            fast++;
+        }
+        return slow;
     }
 };

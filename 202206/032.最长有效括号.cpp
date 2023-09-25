@@ -61,7 +61,7 @@ public:
                 st.push(i);
             } else {
                 st.pop(); // 匹配一个
-                if (st.empty()) {
+                if (st.empty()) { // 右括号数 > 左括号数，重新维护左边界
                     st.push(i);
                 } else {
                     res = max(res, i - st.top());                    

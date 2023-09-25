@@ -1,6 +1,9 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
+        if (nums.size() == 0) {
+            return {-1, -1};
+        }
     	// 核心思想在于mid是偏左还是偏右！！！！
     	int l = -1;
     	int r = -1;
