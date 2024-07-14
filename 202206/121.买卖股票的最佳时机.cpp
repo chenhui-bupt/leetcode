@@ -4,15 +4,17 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int profit = 0;
-        if (prices.size() == 0) {
-            return 0;
-        }
+        int res = 0;
         int cost = prices[0];
         for (int i = 1; i < prices.size(); ++i) {
-            profit = max(profit, prices[i] - buy);
-            buy = min(buy, prices[i]);
+            if (prices[i] > cost) { // 高点卖出
+                res = max(res, prices[i] - cost);
+            }
+            
+            if (prices[i] < cost) { // 低点买入
+                cost = prices[i];
+            } 
         }
-        return profit;
+        return res;
     }
 };

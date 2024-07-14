@@ -1,3 +1,4 @@
+// 快排
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
@@ -42,5 +43,57 @@ public:
         }
         vec[index] = pivot;
         return index;
+    }
+
+    int partition2(vector<pair<int, int>>& nums, int left, int right) {
+        auto target = nums[left];
+        while (left < right) {
+            while (left < right && nums[right].second >= target.second) {
+                --right;
+            }
+            nums[left] = nums[right];
+            while (left < right && nums[left].second <= target.second) {
+                ++left;
+            }
+            nums[right] = nums[left];
+        }
+        nums[left] = target;
+        return left;
+    }
+};
+
+
+// 优先队列
+class Solution {
+public:
+
+    static bool cmp(pair<int, int> left, pair<int, int> right) {
+        return left.second > right.second;
+    }
+
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        unordered_map<int, int> mp;
+        for (int num : nums) {
+            mp[num]++;
+        }
+
+        priority_queue<pair<int, int>, vector<pair<int, int>>, decltype(&cmp)> q(cmp);
+        for (auto [num, cnt] : mp) {
+            if (q.size() == k) {
+                if (cnt > q.top().second) {
+                    q.pop();
+                    q.emplace(num, cnt);
+                }
+            } else {
+                q.push(make_pair(num, cnt));
+            }
+        }
+
+        vector<int> res;
+        while (!q.empty()) {
+            res.push_back(q.top().first);
+            q.pop();
+        }
+        return res;
     }
 };

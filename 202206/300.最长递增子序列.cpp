@@ -6,7 +6,7 @@ class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
         int res = 0;
-        vector<int> dp(nums.size());
+        vector<int> dp(nums.size(), 1);
         for (int i = 1; i < nums.size(); ++i) {
             for (int j = 0; j < i; ++j) {
                 if (nums[j] < nums[i]) {
@@ -25,7 +25,7 @@ public:
             } else {
                 int left = 0;
                 int right = res.size() - 1;
-                while (left <= right) {
+                while (left <= right) {  // 等于时也要处理（分别考虑下面if else的两种情况，需要处理时，则l <= r, 不需要处理时，则l < r）
                     int mid = (left + right) >> 1;
                     if (res[mid] < nums[i]) {
                         left = mid + 1;

@@ -37,6 +37,7 @@ public:
 
     	// 算法2：置换法
     	for (int i = 0; i < n; ++i) {
+            // 把nums[i]放在nums[i] - 1位置上
     		while (nums[i] > 0 && nums[i] - 1 < n && nums[nums[i] - 1] != nums[i]) {
     			swap(nums[i], nums[nums[i] - 1]);
     		}

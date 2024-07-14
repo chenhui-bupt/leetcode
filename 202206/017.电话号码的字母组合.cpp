@@ -36,7 +36,7 @@ public:
     		for (int i = 0; i < size; ++i) {
     			string comb = q.front();
     			q.pop();
-    			for (char c : code[d]) {
+    			for (char c : code[digit]) {
     				q.push(comb + c);
     			}
     		}

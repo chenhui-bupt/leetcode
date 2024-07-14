@@ -44,3 +44,44 @@ public:
         return true;
     }
 };
+
+
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        // 快慢指针
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        ListNode* half = reverseList(slow);
+        ListNode* p1 = head;
+        ListNode* p2 = half;
+        bool res = true;
+        while (p2) {
+            if (p1->val != p2->val) {
+                res = false;
+                break;
+            }
+            p1 = p1->next;
+            p2 = p2->next;
+        }
+        //slow->next = reverseList(half);
+        return res;
+    }
+
+    ListNode* reverseList(ListNode* head) {
+        ListNode* pre = nullptr;
+        ListNode* cur = head;
+        while (cur) {
+            ListNode* next = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+};

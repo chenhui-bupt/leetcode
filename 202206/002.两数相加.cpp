@@ -2,8 +2,8 @@ class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
     	int carry = 0;
-    	ListNode* res = new ListNode(0);
-    	ListNode* p = res;
+    	ListNode* dummy = new ListNode(0);
+    	ListNode* p = dummy;
     	ListNode* p1 = l1;
     	ListNode* p2 = l2;
     	while (p1 or p2) {
@@ -24,6 +24,6 @@ public:
     	if (carry > 0) {
     		p->next = new ListNode(carry);
     	}
-    	return res->next;
+    	return dummy->next;
     }
 };

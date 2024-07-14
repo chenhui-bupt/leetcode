@@ -1,13 +1,13 @@
 /*
-算法一：双优先队列，分别维护大于中位数的数，和小于等于中位数的数。
+算法一：双优先队列，分别维护大于中位数的数，和小于及等于中位数的数。
 思路一：
-1、大顶堆负责维护小于等于中位数的数，小顶堆负责维护大于中位数的数；
+1、大顶堆负责维护小于及等于中位数的数，小顶堆负责维护大于中位数的数；
 2、同时注意交换两个堆堆顶的元素，使得两个堆的元素个数平衡；
 3、中位数即是大顶堆的堆顶元素（奇数时），或者两个堆顶元素的均值（偶数时）
 */
 class MedianFinder {
 public:
-    priority_queue<int, vector<int>, less<int>> q_min; // 小于等于中位数的数，大顶堆
+    priority_queue<int, vector<int>, less<int>> q_min; // 小于及等于中位数的数，大顶堆
     priority_queue<int, vector<int>, greater<int>> q_max; // 大于中位数的数，小顶堆
 
 public:

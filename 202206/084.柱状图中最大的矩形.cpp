@@ -41,9 +41,10 @@ public:
         */
         int area = 0;
         int n = heights.size();
+        stack<int> st;
         vector<int> left(n);
         vector<int> right(n, n);
-        for (int i = n - 1; i >= 0; --i) {
+        for (int i = 0; i < n; ++i) {
             while (!st.empty() && heights[st.top()] >= heights[i]) {
                 right[st.top()] = i;
                 st.pop();

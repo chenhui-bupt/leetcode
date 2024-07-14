@@ -19,10 +19,10 @@ public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         ListNode* p1 = headA;
         ListNode* p2 = headB;
-        while (p1 != p2) {
+        while (p1 != p2) { // 两者相等或者同为空指针
             p1 = p1 ? p1->next : headB; // 要能走到末尾的nullptr，才能退出循环！
             p2 = p2 ? p2->next : headA;
         }
-        return p1; // 如果不想交，则p1 = nullptr，相交则为正常节点
+        return p1; // 如果不相交，则p1 = nullptr，相交则为正常节点
     }
 };

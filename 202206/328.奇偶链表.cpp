@@ -19,24 +19,16 @@ public:
         if (!head) {
             return nullptr;
         }
-        ListNode* odd = new ListNode(0);
-        ListNode* even = new ListNode(0);
-        ListNode* p_odd = odd;
-        ListNode* p_even = even;
-        int n = 1;
-        ListNode* p = head;
-        while (p) {
-            if (n % 2 == 1) {
-                p_odd->next = p;
-                p_odd = p_odd->next;
-            } else {
-                p_even->next = p;
-                p_even = p_even->next;
-            }
-            p = p->next;
-            n++;
+        ListNode* odd = head;
+        ListNode* evenHead = head->next;
+        ListNode* even = evenHead;
+        while (even && even->next) {
+            odd->next = even->next;
+            odd = odd->next;
+            even->next = odd->next;
+            even = even->next;
         }
-        p_odd->next = even->next;
-        return odd->next;
+        odd->next = evenHead;
+        return head;
     }
 };

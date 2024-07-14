@@ -21,15 +21,14 @@ public:
     }
 
     bool dfs(vector<vector<char>>& board, int i, int j, vector<vector<int>>& visited, string word, int k) {
-        if (k == word.size()) {
+        if (k == word.size() - 1 && board[i][j] == word[k]) {
             return true;
         }
         if (board[i][j] != word[k]) {
             return false;
         }
         visited[i][j] = 1;
-        bool flag = (k == word.size() - 1)
-            || (i > 0 && !visited[i-1][j] && dfs(board, i - 1, j, visited, word, k + 1))
+        bool flag = (i > 0 && !visited[i-1][j] && dfs(board, i - 1, j, visited, word, k + 1))
             || (i < board.size() - 1 && !visited[i+1][j] && dfs(board, i + 1, j, visited, word, k + 1))
             || (j > 0 && !visited[i][j-1] && dfs(board, i, j - 1, visited, word, k + 1))
             || (j < board[0].size() - 1 && !visited[i][j+1] && dfs(board, i, j + 1, visited, word, k + 1));

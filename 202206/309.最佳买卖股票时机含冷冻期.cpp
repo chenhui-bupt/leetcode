@@ -5,7 +5,6 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        int res = 0;
         int n = prices.size();
         int dp1 = -prices[0]; // 持有一只股票
         int dp2 = 0; // 卖出一只股票

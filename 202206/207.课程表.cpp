@@ -55,10 +55,8 @@ public:
 
 public:
     bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
-        vector<vector<int>> edges;
-        edges.resize(numCourses);
-        vector<int> visited;
-        visited.resize(numCourses);
+        vector<vector<int>> edges(numCourses);
+        vector<int> visited(numCourses);
         for (auto prerequisite : prerequisites) {
             edges[prerequisite[1]].push_back(prerequisite[0]);
         }

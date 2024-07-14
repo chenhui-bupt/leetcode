@@ -96,7 +96,7 @@ public:
                 }
             }
             board[x][y] = c;
-        } else {
+        } else {  // child为叶子节点，回退时删除child节点
             root->children.erase(c); // 回退删除
         }
         

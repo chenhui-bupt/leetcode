@@ -57,7 +57,7 @@ public:
         int target = nums[start];
         int child = 2 * start + 1;
         while (child <= end) {
-            while (child < end && nums[child] < nums[child + 1]) {
+            if (child < end && nums[child] < nums[child + 1]) {
                 child++;
             }
 
