@@ -10,21 +10,20 @@ dp2[i] = max(dp1[i-1], dp2[i-1]); // 不偷
 */
 class Solution {
 public:
+    // 动态规划
     int rob(vector<int>& nums) {
         int res = nums[0];
-        vector<int> dp1(nums.size());
-        vector<int> dp2(nums.size());
-        dp1[0] = nums[0];
-        dp2[0] = 0;
-        for (int i = 1; i < nums.size(); ++i) {
-            dp1[i] = dp2[i-1] + nums[i];
-            dp2[i] = max(dp1[i-1], dp2[i-1]);
-            res = max(res, dp1[i]);
+        int dp1 = nums[0];
+        int dp2 = max(nums[0], nums[1]);
+        for (int i = 2; i < nums.size(); ++i) {
+            int tmp = dp2;
+            dp2 = max(dp1 + nums[i], dp2);
+            dp1 = tmp;
         }
-        return res;
+        return dp2;
     }
 
-    // 其他动态规划
+    // 动态规划
     int rob(vector<int>& nums) {
         vector<int> dp(nums.size());
         dp[0] = nums[0];

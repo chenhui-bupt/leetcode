@@ -20,7 +20,9 @@ public:
 		 // 2.执行任务
 		 int res = 0;
 		 for (int i = 0; i < tasks.size(); ++i) {
+		 	// 2.0 执行一个任务
 		 	res++;
+
 		 	// 2.1 寻找最近执行的任务时间，并累加任务的总体耗时
 		 	int minTime = INT_MAX;
 		 	for (int t : nextTime) {

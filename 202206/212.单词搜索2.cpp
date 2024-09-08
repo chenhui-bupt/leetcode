@@ -96,7 +96,7 @@ public:
                 }
             }
             board[x][y] = c;
-        } else {  // child为叶子节点，回退时删除child节点
+        } else {  // 该节点为已查到单词的子树，回退时删除child节点，避免重复查找单词
             root->children.erase(c); // 回退删除
         }
         
